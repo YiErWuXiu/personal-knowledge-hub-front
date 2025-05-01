@@ -34,19 +34,19 @@ const Favorites = () => {
     }
   };
   
-  return <div className="min-h-screen bg-gradient-to-br from-slate-50 to-white">
+  return <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-blue-50">
       {/* Main Content */}
       <main className="flex-1 p-0">
         {/* Navigation Tabs */}
         <Tabs defaultValue="favorites" className="w-full">
           <TabsList className="w-full rounded-none premium-header">
-            <TabsTrigger value="home" className="data-[state=active]:bg-slate-900/80 text-white px-8 py-2 rounded-none" onClick={() => navigate('/')}>
+            <TabsTrigger value="home" className="data-[state=active]:bg-blue-700/80 text-white px-8 py-2 rounded-none" onClick={() => navigate('/')}>
               首页
             </TabsTrigger>
-            <TabsTrigger value="favorites" className="data-[state=active]:bg-slate-900/80 text-white px-8 py-2 rounded-none">
+            <TabsTrigger value="favorites" className="data-[state=active]:bg-blue-700/80 text-white px-8 py-2 rounded-none">
               我的收藏
             </TabsTrigger>
-            <TabsTrigger value="more-areas" className="data-[state=active]:bg-slate-900/80 text-white px-8 py-2 rounded-none" onClick={() => navigate('/more-areas')}>
+            <TabsTrigger value="more-areas" className="data-[state=active]:bg-blue-700/80 text-white px-8 py-2 rounded-none" onClick={() => navigate('/more-areas')}>
               更多领域
             </TabsTrigger>
           </TabsList>
@@ -54,15 +54,15 @@ const Favorites = () => {
           {/* Favorites Tab Content */}
           <TabsContent value="favorites">
             <div className="p-6">
-              <Card className="mb-6 premium-card">
+              <Card className="mb-6 premium-card border-none shadow-lg">
                 <CardContent className="p-4">
-                  <h2 className="text-xl font-bold text-slate-800 mb-2">我的收藏</h2>
-                  <p className="text-sm text-slate-600">这里是用户喜欢的领域，与个人知识库不相通。</p>
+                  <h2 className="text-xl font-bold text-blue-800 mb-2">我的收藏</h2>
+                  <p className="text-sm text-green-700">这里是用户喜欢的领域，与个人知识库不相通。</p>
                 </CardContent>
               </Card>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-                {recommendations.map(rec => <div key={rec.id} onClick={() => handleCardClick(rec.id)} className="cursor-pointer">
+                {recommendations.map(rec => <div key={rec.id} onClick={() => handleCardClick(rec.id)} className="cursor-pointer hover:scale-105 transition-transform duration-200">
                     <RecommendationCard recommendation={rec} />
                   </div>)}
               </div>
@@ -72,16 +72,16 @@ const Favorites = () => {
           {/* Home Tab Content - Empty since we're on Favorites page */}
           <TabsContent value="home">
             <div className="p-6">
-              <h2 className="text-xl font-semibold mb-4">首页</h2>
-              <p className="text-slate-500">请切换到首页标签查看内容。</p>
+              <h2 className="text-xl font-semibold mb-4 text-blue-800">首页</h2>
+              <p className="text-green-700">请切换到首页标签查看内容。</p>
             </div>
           </TabsContent>
           
           {/* More Areas Tab Content */}
           <TabsContent value="more-areas">
             <div className="p-6">
-              <h2 className="text-xl font-semibold mb-4">更多领域</h2>
-              <p className="text-slate-500">请切换到更多领域标签查看内容。</p>
+              <h2 className="text-xl font-semibold mb-4 text-blue-800">更多领域</h2>
+              <p className="text-green-700">请切换到更多领域标签查看内容。</p>
             </div>
           </TabsContent>
         </Tabs>
