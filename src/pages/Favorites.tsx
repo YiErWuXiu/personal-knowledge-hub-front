@@ -1,31 +1,39 @@
+
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import RecommendationCard from "@/components/RecommendationCard";
+
 const Favorites = () => {
   const navigate = useNavigate();
   const recommendations = [{
     id: 1,
-    title: "量子计算",
-    description: "量子计算技术进展与应用展望",
-    icon: "quantum"
+    title: "纳米材料",
+    description: "纳米材料的研究进展与应用前景",
+    icon: "nano"
   }, {
     id: 2,
-    title: "生物科技",
-    description: "生命科学创新与应用研究",
-    icon: "bio"
+    title: "国际形势",
+    description: "全球地缘政治与经济发展趋势",
+    icon: "global"
   }, {
     id: 3,
-    title: "Web3",
-    description: "去中心化网络技术与应用",
-    icon: "web"
+    title: "农业领域",
+    description: "现代农业技术与可持续发展",
+    icon: "agriculture"
   }];
+  
   const handleCardClick = (id: number) => {
     if (id === 1) {
-      navigate('/quantum-computing');
+      navigate('/nanomaterials');
+    } else if (id === 2) {
+      navigate('/global-situation');
+    } else if (id === 3) {
+      navigate('/agriculture');
     }
   };
+  
   return <div className="min-h-screen bg-slate-50">
       {/* Main Content */}
       <main className="flex-1 p-0">
@@ -69,4 +77,5 @@ const Favorites = () => {
       </main>
     </div>;
 };
+
 export default Favorites;

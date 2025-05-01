@@ -17,12 +17,12 @@ const RecommendationCard = ({ recommendation }: RecommendationCardProps) => {
   // Different icon colors based on category
   const getIconColor = () => {
     switch (recommendation.icon) {
-      case 'quantum':
+      case 'nano':
         return 'bg-blue-50 text-blue-500';
-      case 'bio':
+      case 'global':
+        return 'bg-red-50 text-red-500';
+      case 'agriculture':
         return 'bg-green-50 text-green-500';
-      case 'web':
-        return 'bg-purple-50 text-purple-500';
       default:
         return 'bg-gray-50 text-gray-500';
     }
@@ -31,26 +31,35 @@ const RecommendationCard = ({ recommendation }: RecommendationCardProps) => {
   // Different icon based on category
   const renderIcon = () => {
     switch (recommendation.icon) {
-      case 'quantum':
+      case 'nano':
         return (
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+            <circle cx="12" cy="12" r="1" />
+            <path d="M8.5 8.5l7 7" />
+            <path d="M8.5 15.5l7-7" />
+            <circle cx="12" cy="12" r="8" />
           </svg>
         );
-      case 'bio':
-        return (
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M18 2a4 4 0 0 0-4 4v12a4 4 0 0 0 4 4 4 4 0 0 0 4-4V6a4 4 0 0 0-4-4z" />
-            <path d="M10 6a4 4 0 0 0-4 4v8a4 4 0 0 0 4 4 4 4 0 0 0 4-4v-8a4 4 0 0 0-4-4z" />
-            <path d="M2 12a4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4 4 4 0 0 0-4 4z" />
-          </svg>
-        );
-      case 'web':
+      case 'global':
         return (
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="12" cy="12" r="10" />
             <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
             <path d="M2 12h20" />
+          </svg>
+        );
+      case 'agriculture':
+        return (
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M2 22c1.25-1.67 2.5-3.33 3.75-5" />
+            <path d="M6.7 22c1.68-2.24 3.35-4.48 5.03-6.72" />
+            <path d="M11.7 22c2.1-2.79 4.2-5.57 6.3-8.36" />
+            <path d="M16.7 22c1.68-2.24 3.35-4.48 5.03-6.72" />
+            <path d="M5.5 8.5c1.07 1.1 2.13 2.18 3.16 3.3" />
+            <path d="M7.75 2c-.75.9-1.5 1.8-2.25 2.7" />
+            <path d="M12.75 2c-1 1.2-2 2.4-3 3.6" />
+            <path d="M17.75 2c-1.25 1.5-2.5 3-3.75 4.5" />
+            <path d="M22.75 2c-1.5 1.8-3 3.6-4.5 5.4" />
           </svg>
         );
       default:
