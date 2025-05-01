@@ -1,55 +1,311 @@
 
-import AreaPageHeader from "@/components/AreaPageHeader";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, Heart, ChevronRight, Atom } from "lucide-react";
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 
 const Nanomaterials = () => {
-  const areaInfo = {
-    id: 1,
-    title: "纳米材料",
-    description: "纳米材料的研究进展与应用前景",
-    icon: "nano",
-    path: "/nanomaterials"
-  };
+  const navigate = useNavigate();
+  
+  // Topic categories
+  const topicCategories = [
+    "纳米材料的制备技术", 
+    "纳米材料的表征方法", 
+    "纳米材料的应用领域", 
+    "石墨烯研究进展"
+  ];
+  
+  // Hot topics with statistics
+  const hotTopics = [
+    {
+      title: "碳基纳米材料",
+      description: "碳纳米管与石墨烯的最新研究进展",
+      percentage: "+28%"
+    },
+    {
+      title: "纳米复合材料",
+      description: "高性能纳米复合材料的设计与制备",
+      percentage: "+32%"
+    },
+    {
+      title: "纳米催化剂",
+      description: "纳米催化剂在能源转换中的应用",
+      percentage: "+24%"
+    },
+    {
+      title: "量子点技术",
+      description: "量子点在生物成像与传感中的应用",
+      percentage: "+20%"
+    }
+  ];
+  
+  // Recent reports
+  const recentReports = [
+    {
+      id: 1,
+      title: "纳米材料在新能源领域的应用前景",
+      content: "探讨纳米材料在太阳能电池、燃料电池和锂电池等新能源领域的关键应用与发展趋势。",
+      date: "2025-04-14",
+      readTime: "10 分钟",
+      isNew: true
+    },
+    {
+      id: 2,
+      title: "二维纳米材料的制备与性能研究",
+      content: "分析二维纳米材料的制备方法、结构表征以及在电子器件、传感器等领域的应用潜力。",
+      date: "2025-04-09",
+      readTime: "15 分钟",
+      isRecommended: true
+    }
+  ];
+  
+  // Recent statistics
+  const recentStats = [
+    {
+      title: "材料性能",
+      icon: "📊"
+    },
+    {
+      title: "行业应用",
+      icon: "🔬"
+    },
+    {
+      title: "研究热点",
+      icon: "📌"
+    }
+  ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-blue-50">
-      <AreaPageHeader 
-        title="纳米材料" 
-        areaId={areaInfo.id} 
-        areaInfo={areaInfo} 
-      />
-      
-      <div className="container mx-auto p-6 animate-fade-in">
-        <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-md border border-blue-100">
-          <h2 className="text-2xl font-bold mb-4 text-blue-800 border-b-2 border-blue-100 pb-2">纳米材料概述</h2>
-          <p className="mb-4 leading-relaxed">
-            纳米材料是指至少在一维空间上尺寸为1-100纳米范围内的材料。由于尺寸效应和表面效应，纳米材料展现出许多独特的物理、化学和生物学特性。
-          </p>
+    <div className="min-h-screen bg-slate-50">
+      {/* Main Content */}
+      <main className="flex-1 p-0">
+        {/* Navigation Tabs */}
+        <Tabs defaultValue="favorites" className="w-full">
+          <TabsList className="w-full rounded-none bg-slate-700">
+            <TabsTrigger 
+              value="home" 
+              className="data-[state=active]:bg-slate-800 text-white px-8 py-2 rounded-none"
+              onClick={() => navigate('/')}
+            >
+              首页
+            </TabsTrigger>
+            <TabsTrigger 
+              value="favorites"
+              className="data-[state=active]:bg-slate-800 text-white px-8 py-2 rounded-none"
+              onClick={() => navigate('/favorites')}
+            >
+              我的喜欢
+            </TabsTrigger>
+          </TabsList>
           
-          <h3 className="text-xl font-semibold mb-3 mt-6 text-blue-700">研究领域</h3>
-          <ul className="list-disc pl-5 space-y-2 mb-6 bg-blue-50 p-4 rounded-lg">
-            <li className="transition-transform hover:translate-x-1">纳米颗粒与纳米复合材料</li>
-            <li className="transition-transform hover:translate-x-1">碳纳米管与石墨烯</li>
-            <li className="transition-transform hover:translate-x-1">纳米生物材料</li>
-            <li className="transition-transform hover:translate-x-1">纳米催化剂</li>
-            <li className="transition-transform hover:translate-x-1">纳米电子材料</li>
-          </ul>
+          {/* Nanomaterials Content */}
+          <TabsContent value="favorites" className="p-4">
+            {/* Back Button */}
+            <div className="mb-4">
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={() => navigate('/favorites')}
+                className="flex items-center gap-1 text-slate-600 hover:text-slate-900"
+              >
+                <ArrowLeft size={16} />
+                <span>返回</span>
+              </Button>
+            </div>
+            
+            {/* Title Card */}
+            <Card className="mb-6 bg-blue-50 border-none shadow-sm">
+              <CardContent className="p-6">
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h2 className="text-xl font-bold text-blue-800 mb-2">纳米材料</h2>
+                    <p className="text-sm text-blue-600">纳米材料的研究进展与应用前景</p>
+                    
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      {topicCategories.map((category, index) => (
+                        <Badge 
+                          key={index} 
+                          variant="outline"
+                          className="bg-white text-blue-700 hover:bg-blue-50"
+                        >
+                          {category}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    className="text-gray-500 hover:text-blue-700 flex items-center"
+                  >
+                    <Heart size={16} className="mr-1" />
+                    <span>添加到我的收藏</span>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {/* Main Content - Left Side (Hot Topics) */}
+              <div className="lg:col-span-2 space-y-6">
+                <div className="flex items-center gap-2 text-blue-800 font-medium mb-2">
+                  <Atom size={18} />
+                  <span>热门话题</span>
+                </div>
+                
+                <div className="space-y-4">
+                  {hotTopics.map((topic, index) => (
+                    <div key={index} className="p-4 bg-white rounded-md shadow-sm hover:shadow-md transition-shadow">
+                      <div className="flex justify-between">
+                        <div>
+                          <h3 className="font-medium text-gray-800">{topic.title}</h3>
+                          <p className="text-sm text-gray-500 mt-1">{topic.description}</p>
+                        </div>
+                        <span className="text-green-500 font-medium">{topic.percentage}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Recent Reports */}
+                <div className="mt-8 pt-6 border-t border-gray-200">
+                  {recentReports.map((report) => (
+                    <div key={report.id} className="mb-6 pb-6 border-b border-gray-100">
+                      <div className="flex justify-between items-start mb-2">
+                        <h3 className="text-lg font-medium text-gray-800">{report.title}</h3>
+                        {report.isRecommended && (
+                          <Badge className="bg-blue-100 text-blue-700 border-blue-200">推荐</Badge>
+                        )}
+                        {report.isNew && (
+                          <Badge className="bg-green-100 text-green-700 border-green-200">最新</Badge>
+                        )}
+                      </div>
+                      <p className="text-gray-600 mb-3">{report.content}</p>
+                      <div className="flex justify-between items-center text-xs text-gray-500">
+                        <span>📅 {report.date}</span>
+                        <span>⏱️ {report.readTime}</span>
+                        <Button 
+                          variant="ghost" 
+                          size="sm" 
+                          className="text-blue-600 hover:text-blue-800 p-0 h-auto"
+                        >
+                          阅读全文 <ChevronRight className="ml-1 h-3 w-3" />
+                        </Button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Pagination */}
+                <Pagination>
+                  <PaginationContent>
+                    <PaginationPrevious href="#" />
+                    <PaginationItem>
+                      <PaginationLink href="#" isActive>1</PaginationLink>
+                    </PaginationItem>
+                    <PaginationItem>
+                      <PaginationLink href="#">2</PaginationLink>
+                    </PaginationItem>
+                    <PaginationItem>
+                      <PaginationLink href="#">3</PaginationLink>
+                    </PaginationItem>
+                    <PaginationNext href="#" />
+                  </PaginationContent>
+                </Pagination>
+              </div>
+              
+              {/* Sidebar - Right Side (Stats) */}
+              <div className="space-y-6">
+                <Card className="overflow-hidden">
+                  <CardContent className="p-4">
+                    <h3 className="text-sm font-medium mb-3 text-gray-700">上周周报</h3>
+                    
+                    <Table>
+                      <TableBody>
+                        {recentStats.map((stat, index) => (
+                          <TableRow key={index}>
+                            <TableCell className="py-2 pl-0">
+                              <span className="mr-2">{stat.icon}</span>
+                              <span className="text-sm text-gray-600">{stat.title}</span>
+                            </TableCell>
+                            <TableCell className="text-right">
+                              <Button 
+                                variant="ghost" 
+                                size="sm" 
+                                className="h-7 px-2 text-blue-600"
+                              >
+                                查看
+                              </Button>
+                            </TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                    
+                    <div className="mt-4 text-center">
+                      <Button 
+                        variant="outline" 
+                        size="sm" 
+                        className="w-full text-gray-600 mt-2"
+                      >
+                        查看全部报告
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+                
+                {/* Quick Actions */}
+                <div className="grid grid-cols-3 gap-2">
+                  <Button 
+                    variant="outline" 
+                    className="flex flex-col items-center justify-center h-24 bg-white"
+                  >
+                    <span className="text-lg mb-1">📊</span>
+                    <span className="text-xs text-gray-600">研究报告</span>
+                  </Button>
+                  
+                  <Button 
+                    variant="outline" 
+                    className="flex flex-col items-center justify-center h-24 bg-white"
+                  >
+                    <span className="text-lg mb-1">📁</span>
+                    <span className="text-xs text-gray-600">收藏内容</span>
+                  </Button>
+                  
+                  <Button 
+                    variant="outline" 
+                    className="flex flex-col items-center justify-center h-24 bg-white"
+                  >
+                    <span className="text-lg mb-1">✏️</span>
+                    <span className="text-xs text-gray-600">发表总结</span>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </TabsContent>
           
-          <h3 className="text-xl font-semibold mb-3 text-blue-700">应用前景</h3>
-          <p className="mb-4 bg-yellow-50 p-4 rounded-lg leading-relaxed">
-            纳米材料在医疗、电子、能源、环保等领域有着广泛的应用前景。例如，在医疗领域，纳米材料可用于靶向药物递送、生物成像和疾病诊断。在电子领域，纳米材料可用于开发更小、更快、更节能的电子设备。
-          </p>
-          
-          <h3 className="text-xl font-semibold mb-3 mt-6 text-blue-700">最新研究进展</h3>
-          <p className="mb-4 bg-green-50 p-4 rounded-lg leading-relaxed">
-            近年来，纳米材料的研究取得了许多重要进展，包括新型纳米材料的合成方法、纳米材料的表征技术以及纳米材料在各个领域的应用。特别是在能源存储和转换、环境修复、生物医学等方面，纳米材料展现出了巨大的潜力。
-          </p>
-          
-          <h3 className="text-xl font-semibold mb-3 mt-6 text-blue-700">挑战与机遇</h3>
-          <p className="mb-4 bg-purple-50 p-4 rounded-lg leading-relaxed">
-            尽管纳米材料有着广泛的应用前景，但其发展仍面临许多挑战，如大规模生产、成本控制、安全性评估等。同时，纳米材料的研究也带来了许多新的机遇，为材料科学、物理学、化学、生物学等领域的交叉融合提供了新的平台。
-          </p>
-        </div>
-      </div>
+          {/* Empty Home Content */}
+          <TabsContent value="home">
+            <div className="p-6">
+              <h2 className="text-xl font-semibold mb-4">首页</h2>
+              <p className="text-gray-500 mb-4">正在准备跳转到首页...</p>
+            </div>
+          </TabsContent>
+        </Tabs>
+      </main>
     </div>
   );
 };

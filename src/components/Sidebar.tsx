@@ -13,17 +13,17 @@ const Sidebar = () => {
   }
   
   return (
-    <div className={`${isCollapsed ? 'w-12' : 'w-48'} bg-gradient-to-b from-[#F2FCE2] to-[#D3E4FD] min-h-screen p-4 flex flex-col relative transition-all duration-300`}>
+    <div className={`${isCollapsed ? 'w-12' : 'w-48'} bg-purple-50 min-h-screen p-4 flex flex-col relative transition-all duration-300`}>
       {/* Collapse Toggle Button */}
       <button 
         onClick={() => setIsCollapsed(!isCollapsed)} 
-        className="absolute -right-3 top-6 bg-white rounded-full p-1 shadow-md hover:bg-blue-50 z-10 transition-colors"
+        className="absolute -right-3 top-6 bg-white rounded-full p-1 shadow-md hover:bg-purple-100 z-10"
       >
         {isCollapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
       </button>
       
       <div className="mb-6">
-        {!isCollapsed && <h2 className="text-lg font-semibold text-blue-800 animate-float">个人知识库</h2>}
+        {!isCollapsed && <h2 className="text-lg font-semibold text-gray-800">个人知识库</h2>}
       </div>
       
       <nav className="space-y-2">
@@ -77,10 +77,10 @@ const SidebarItem = ({
   return (
     <Link
       to={to} 
-      className={`flex items-center gap-3 px-3 py-2 rounded-md transition-all ${
+      className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors ${
         isActive 
-          ? "bg-white/70 text-blue-700 shadow-sm" 
-          : "text-gray-700 hover:bg-white/50 hover:text-blue-700"
+          ? "bg-purple-100 text-purple-700" 
+          : "text-gray-700 hover:bg-purple-100 hover:text-purple-700"
       }`}
       title={isCollapsed ? label : ""}
     >
