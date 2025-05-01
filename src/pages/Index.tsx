@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { ArrowRight, Bookmark, Briefcase, Calendar, Home, Search, Upload, User } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -36,27 +37,6 @@ const Index = () => {
       source: "从 blockchain-supply.com 导入",
       date: "2025-04-10",
       icon: "blockchain"
-    }
-  ];
-
-  const recommendations = [
-    {
-      id: 1,
-      title: "纳米材料",
-      description: "纳米材料的研究进展与应用前景",
-      icon: "nano"
-    },
-    {
-      id: 2,
-      title: "国际形势",
-      description: "全球地缘政治与经济发展趋势",
-      icon: "global"
-    },
-    {
-      id: 3,
-      title: "农业领域",
-      description: "现代农业技术与可持续发展",
-      icon: "agriculture"
     }
   ];
 
@@ -117,21 +97,6 @@ const Index = () => {
 
               {/* Upload Area */}
               <UploadArea />
-
-              {/* Recommended Areas */}
-              <div className="mt-6">
-                <Badge variant="outline" className="bg-amber-50 text-amber-600 border-amber-200 flex w-fit items-center gap-1 px-3 py-1">
-                  <Calendar className="h-3 w-3" />
-                  <span>推荐领域</span>
-                </Badge>
-              </div>
-            </div>
-
-            {/* Recommendation Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-              {recommendations.map((rec) => (
-                <RecommendationCard key={rec.id} recommendation={rec} />
-              ))}
             </div>
 
             {/* Recent Knowledge */}
