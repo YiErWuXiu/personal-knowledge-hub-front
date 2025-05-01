@@ -1,8 +1,11 @@
 
 import React from "react";
-import { Home, BookOpen, Briefcase, TrendingUp } from "lucide-react";
+import { BookOpen, Briefcase, TrendingUp, FileText } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
+  const location = useLocation();
+  
   return (
     <div className="w-48 bg-purple-50 min-h-screen p-4 flex flex-col">
       <div className="mb-6">
@@ -10,25 +13,59 @@ const Sidebar = () => {
       </div>
       
       <nav className="space-y-2">
-        <SidebarItem icon={<BookOpen size={18} />} label="AI领域" />
-        <SidebarItem icon={<Briefcase size={18} />} label="金融" />
-        <SidebarItem icon={<Briefcase size={18} />} label="商业" />
-        <SidebarItem icon={<TrendingUp size={18} />} label="股市" />
+        <SidebarItem 
+          icon={<FileText size={18} />} 
+          label="AI" 
+          to="/ai"
+          isActive={location.pathname === "/ai"}
+        />
+        <SidebarItem 
+          icon={<Briefcase size={18} />} 
+          label="金融" 
+          to="/finance"
+          isActive={location.pathname === "/finance"}
+        />
+        <SidebarItem 
+          icon={<Briefcase size={18} />} 
+          label="商业" 
+          to="/business"
+          isActive={location.pathname === "/business"}
+        />
+        <SidebarItem 
+          icon={<TrendingUp size={18} />} 
+          label="股市" 
+          to="/stocks"
+          isActive={location.pathname === "/stocks"}
+        />
       </nav>
     </div>
   );
 };
 
 // Sidebar Item Component
-const SidebarItem = ({ icon, label }: { icon: React.ReactNode; label: string }) => {
+const SidebarItem = ({ 
+  icon, 
+  label, 
+  to, 
+  isActive 
+}: { 
+  icon: React.ReactNode; 
+  label: string; 
+  to: string;
+  isActive?: boolean;
+}) => {
   return (
-    <a 
-      href="#" 
-      className="flex items-center gap-3 px-3 py-2 text-gray-700 hover:bg-purple-100 hover:text-purple-700 rounded-md transition-colors"
+    <Link
+      to={to} 
+      className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors ${
+        isActive 
+          ? "bg-purple-100 text-purple-700" 
+          : "text-gray-700 hover:bg-purple-100 hover:text-purple-700"
+      }`}
     >
       {icon}
       <span>{label}</span>
-    </a>
+    </Link>
   );
 };
 
