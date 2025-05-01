@@ -1,12 +1,13 @@
 
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import RecommendationCard from "@/components/RecommendationCard";
+import { useFavorites } from "@/contexts/FavoritesContext";
 
 const MoreAreas = () => {
   const navigate = useNavigate();
+  const { isFavorite } = useFavorites();
   
   // All recommended areas - updated to have 9 unique areas
   const allAreas = [
@@ -14,74 +15,72 @@ const MoreAreas = () => {
       id: 1,
       title: "生物科技",
       description: "生物技术的最新研究与应用",
-      icon: "bio"
+      icon: "bio",
+      path: "/biotechnology"
     },
     {
       id: 2,
       title: "太空探索",
       description: "太空探索与星际旅行的前沿研究",
-      icon: "space"
+      icon: "space",
+      path: "/space-exploration"
     },
     {
       id: 3,
       title: "绿色能源",
       description: "可再生能源技术与可持续发展",
-      icon: "energy"
+      icon: "energy",
+      path: "/green-energy"
     },
     {
       id: 4,
       title: "教育科技",
       description: "教育创新与数字化学习方法",
-      icon: "edutech"
+      icon: "edutech",
+      path: "/education-tech"
     },
     {
       id: 5,
       title: "机器人学",
       description: "机器人设计与自动化技术发展",
-      icon: "robotics"
+      icon: "robotics",
+      path: "/robotics"
     },
     {
       id: 6,
       title: "医疗健康",
       description: "现代医疗技术与健康管理创新",
-      icon: "health"
+      icon: "health",
+      path: "/healthcare"
     },
     {
       id: 7,
       title: "智慧城市",
       description: "智能城市规划与城市科技应用",
-      icon: "city"
+      icon: "city",
+      path: "/smart-cities"
     },
     {
       id: 8,
       title: "海洋科学",
       description: "海洋研究与海洋资源可持续利用",
-      icon: "ocean"
+      icon: "ocean",
+      path: "/ocean-science"
     },
     {
       id: 9,
       title: "心理学",
       description: "心理学研究与心理健康应用",
-      icon: "psycho"
+      icon: "psycho",
+      path: "/psychology"
     }
   ];
   
-  const handleCardClick = (id: number) => {
-    const routes: { [key: number]: string } = {
-      1: '/biotechnology',
-      2: '/space-exploration',
-      3: '/green-energy',
-      4: '/education-tech',
-      5: '/robotics',
-      6: '/healthcare',
-      7: '/smart-cities',
-      8: '/ocean-science',
-      9: '/psychology'
-    };
-    
-    if (routes[id]) {
-      navigate(routes[id]);
-    }
+  // Filter out areas that are already in favorites
+  const nonFavoriteAreas = allAreas.filter(area => !isFavorite(area.id));
+  
+  const handleCardClick = (path: string) => {
+    navigate(path);
   };
   
   return (
@@ -121,11 +120,21 @@ const MoreAreas = () => {
               </Card>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-                {allAreas.map(area => (
-                  <div key={area.id} onClick={() => handleCardClick(area.id)} className="cursor-pointer">
-                    <RecommendationCard recommendation={area} />
-                  </div>
-                ))}
+                {nonFavoriteAreas.length > 0 ? (
+                  nonFavoriteAreas.map(area => (
+                    <div 
+                      key={area.id} 
+                      onClick={() => handleCardClick(area.path)} 
+                      className="cursor-pointer"
+                    >
+                      <RecommendationCard recommendation={area} />
+                    </div>
+                  ))
+                ) : (
+                  <p className="col-span-3 text-center text-gray-500 py-8">
+                    所有领域已被添加到收藏夹中！
+                  </p>
+                )}
               </div>
             </div>
           </TabsContent>
