@@ -1,9 +1,13 @@
 
 import React from "react";
-import { FileText } from "lucide-react";
+import { FileText, ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import Sidebar from "@/components/Sidebar";
+import { Button } from "@/components/ui/button";
 
 const AI = () => {
+  const navigate = useNavigate();
+
   // Sample AI research reports data
   const aiReports = [
     {
@@ -47,6 +51,19 @@ const AI = () => {
 
       {/* Main Content */}
       <main className="flex-1 p-6">
+        {/* Back Button */}
+        <div className="mb-4">
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={() => navigate('/')}
+            className="flex items-center gap-1 text-slate-600 hover:text-slate-900"
+          >
+            <ArrowLeft size={16} />
+            <span>返回首页</span>
+          </Button>
+        </div>
+        
         <h1 className="text-2xl font-bold mb-6">AI 领域</h1>
         
         <div className="space-y-4">

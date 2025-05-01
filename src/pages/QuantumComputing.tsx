@@ -4,7 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
-import { Calendar } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, Calendar } from "lucide-react";
 
 const QuantumComputing = () => {
   const navigate = useNavigate();
@@ -37,6 +38,19 @@ const QuantumComputing = () => {
     <div className="min-h-screen bg-slate-50">
       {/* Main Content */}
       <main className="flex-1 p-0">
+        {/* Back Button */}
+        <div className="p-4 flex items-center">
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            onClick={() => navigate('/favorites')}
+            className="flex items-center gap-1 text-slate-600 hover:text-slate-900"
+          >
+            <ArrowLeft size={16} />
+            <span>返回</span>
+          </Button>
+        </div>
+        
         {/* Navigation Tabs */}
         <Tabs defaultValue="favorites" className="w-full">
           <TabsList className="w-full rounded-none bg-slate-700">

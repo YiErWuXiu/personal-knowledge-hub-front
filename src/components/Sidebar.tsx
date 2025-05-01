@@ -1,10 +1,11 @@
 
-import React from "react";
-import { BookOpen, Briefcase, TrendingUp, FileText } from "lucide-react";
+import React, { useState } from "react";
+import { BookOpen, Briefcase, ChevronLeft, ChevronRight, TrendingUp, FileText } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
   const location = useLocation();
+  const [isCollapsed, setIsCollapsed] = useState(false);
   
   // Hide sidebar on Favorites page and QuantumComputing page
   if (location.pathname === "/favorites" || location.pathname === "/quantum-computing") {
@@ -12,9 +13,17 @@ const Sidebar = () => {
   }
   
   return (
-    <div className="w-48 bg-purple-50 min-h-screen p-4 flex flex-col">
+    <div className={`${isCollapsed ? 'w-12' : 'w-48'} bg-purple-50 min-h-screen p-4 flex flex-col relative transition-all duration-300`}>
+      {/* Collapse Toggle Button */}
+      <button 
+        onClick={() => setIsCollapsed(!isCollapsed)} 
+        className="absolute -right-3 top-6 bg-white rounded-full p-1 shadow-md hover:bg-purple-100 z-10"
+      >
+        {isCollapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
+      </button>
+      
       <div className="mb-6">
-        <h2 className="text-lg font-semibold text-gray-800">个人知识库</h2>
+        {!isCollapsed && <h2 className="text-lg font-semibold text-gray-800">个人知识库</h2>}
       </div>
       
       <nav className="space-y-2">
@@ -23,24 +32,28 @@ const Sidebar = () => {
           label="AI" 
           to="/ai"
           isActive={location.pathname === "/ai"}
+          isCollapsed={isCollapsed}
         />
         <SidebarItem 
           icon={<Briefcase size={18} />} 
           label="金融" 
           to="/finance"
           isActive={location.pathname === "/finance"}
+          isCollapsed={isCollapsed}
         />
         <SidebarItem 
           icon={<Briefcase size={18} />} 
           label="商业" 
           to="/business"
           isActive={location.pathname === "/business"}
+          isCollapsed={isCollapsed}
         />
         <SidebarItem 
           icon={<TrendingUp size={18} />} 
           label="股市" 
           to="/stocks"
           isActive={location.pathname === "/stocks"}
+          isCollapsed={isCollapsed}
         />
       </nav>
     </div>
@@ -52,12 +65,14 @@ const SidebarItem = ({
   icon, 
   label, 
   to, 
-  isActive 
+  isActive,
+  isCollapsed
 }: { 
   icon: React.ReactNode; 
   label: string; 
   to: string;
   isActive?: boolean;
+  isCollapsed: boolean;
 }) => {
   return (
     <Link
@@ -67,9 +82,10 @@ const SidebarItem = ({
           ? "bg-purple-100 text-purple-700" 
           : "text-gray-700 hover:bg-purple-100 hover:text-purple-700"
       }`}
+      title={isCollapsed ? label : ""}
     >
       {icon}
-      <span>{label}</span>
+      {!isCollapsed && <span>{label}</span>}
     </Link>
   );
 };
