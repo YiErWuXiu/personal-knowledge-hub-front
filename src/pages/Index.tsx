@@ -63,6 +63,13 @@ const Index = () => {
             >
               我的喜欢
             </TabsTrigger>
+            <TabsTrigger 
+              value="more-areas"
+              className="data-[state=active]:bg-slate-800 text-white px-8 py-2 rounded-none"
+              onClick={() => navigate('/more-areas')}
+            >
+              更多领域
+            </TabsTrigger>
           </TabsList>
           
           {/* Home Tab Content */}
@@ -124,6 +131,20 @@ const Index = () => {
                 onClick={() => navigate('/favorites')}
               >
                 查看我的喜欢
+              </Button>
+            </div>
+          </TabsContent>
+          
+          {/* More Areas Tab Content */}
+          <TabsContent value="more-areas">
+            <div className="p-6">
+              <h2 className="text-xl font-semibold mb-4">更多领域</h2>
+              <p className="text-gray-500">点击下方按钮查看更多领域页面。</p>
+              <Button 
+                className="mt-4" 
+                onClick={() => navigate('/more-areas')}
+              >
+                查看更多领域
               </Button>
             </div>
           </TabsContent>

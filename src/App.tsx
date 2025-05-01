@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Favorites from "./pages/Favorites";
+import MoreAreas from "./pages/MoreAreas";
 import AI from "./pages/AI";
 import QuantumComputing from "./pages/QuantumComputing";
 import Nanomaterials from "./pages/Nanomaterials";
@@ -27,6 +28,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path="/more-areas" element={<MoreAreas />} />
           <Route path="/ai" element={<AI />} />
           <Route path="/quantum-computing" element={<QuantumComputing />} />
           <Route path="/nanomaterials" element={<Nanomaterials />} />

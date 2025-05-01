@@ -46,6 +46,9 @@ const Favorites = () => {
             <TabsTrigger value="favorites" className="data-[state=active]:bg-slate-800 text-white px-8 py-2 rounded-none">
               我的喜欢
             </TabsTrigger>
+            <TabsTrigger value="more-areas" className="data-[state=active]:bg-slate-800 text-white px-8 py-2 rounded-none" onClick={() => navigate('/more-areas')}>
+              更多领域
+            </TabsTrigger>
           </TabsList>
           
           {/* Favorites Tab Content */}
@@ -71,6 +74,14 @@ const Favorites = () => {
             <div className="p-6">
               <h2 className="text-xl font-semibold mb-4">首页</h2>
               <p className="text-gray-500">请切换到首页标签查看内容。</p>
+            </div>
+          </TabsContent>
+          
+          {/* More Areas Tab Content */}
+          <TabsContent value="more-areas">
+            <div className="p-6">
+              <h2 className="text-xl font-semibold mb-4">更多领域</h2>
+              <p className="text-gray-500">请切换到更多领域标签查看内容。</p>
             </div>
           </TabsContent>
         </Tabs>
