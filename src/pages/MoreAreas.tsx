@@ -67,8 +67,21 @@ const MoreAreas = () => {
   ];
   
   const handleCardClick = (id: number) => {
-    // For now, clicking on any area just shows an alert
-    alert(`您选择了: ${allAreas.find(area => area.id === id)?.title}。此页面正在建设中。`);
+    const routes: { [key: number]: string } = {
+      1: '/biotechnology',
+      2: '/space-exploration',
+      3: '/green-energy',
+      4: '/education-tech',
+      5: '/robotics',
+      6: '/healthcare',
+      7: '/smart-cities',
+      8: '/ocean-science',
+      9: '/psychology'
+    };
+    
+    if (routes[id]) {
+      navigate(routes[id]);
+    }
   };
   
   return (

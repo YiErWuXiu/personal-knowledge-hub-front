@@ -16,6 +16,14 @@ import Agriculture from "./pages/Agriculture";
 import Finance from "./pages/Finance";
 import Business from "./pages/Business";
 import Stocks from "./pages/Stocks";
+import Biotechnology from "./pages/Biotechnology";
+
+// Import other area pages when they are created
+/* For example:
+import SpaceExploration from "./pages/SpaceExploration";
+import GreenEnergy from "./pages/GreenEnergy";
+etc.
+*/
 
 const queryClient = new QueryClient();
 
@@ -37,6 +45,16 @@ const App = () => (
           <Route path="/finance" element={<Finance />} />
           <Route path="/business" element={<Business />} />
           <Route path="/stocks" element={<Stocks />} />
+          
+          {/* New area routes */}
+          <Route path="/biotechnology" element={<Biotechnology />} />
+          {/* Add other area routes here as they are created */}
+          {/* For example:
+          <Route path="/space-exploration" element={<SpaceExploration />} />
+          <Route path="/green-energy" element={<GreenEnergy />} />
+          etc.
+          */}
+          
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
