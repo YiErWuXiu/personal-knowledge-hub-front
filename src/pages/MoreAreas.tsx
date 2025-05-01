@@ -8,85 +8,67 @@ import RecommendationCard from "@/components/RecommendationCard";
 const MoreAreas = () => {
   const navigate = useNavigate();
   
-  // All recommended areas
+  // All recommended areas - updated to have 9 unique areas
   const allAreas = [
     {
       id: 1,
-      title: "人工智能",
-      description: "AI技术研究与应用前沿",
-      icon: "ai"
+      title: "生物科技",
+      description: "生物技术的最新研究与应用",
+      icon: "bio"
     },
     {
       id: 2,
-      title: "纳米材料",
-      description: "纳米材料的研究进展与应用前景",
-      icon: "nano"
+      title: "太空探索",
+      description: "太空探索与星际旅行的前沿研究",
+      icon: "space"
     },
     {
       id: 3,
-      title: "国际形势",
-      description: "全球地缘政治与经济发展趋势",
-      icon: "global"
+      title: "绿色能源",
+      description: "可再生能源技术与可持续发展",
+      icon: "energy"
     },
     {
       id: 4,
-      title: "农业领域",
-      description: "现代农业技术与可持续发展",
-      icon: "agriculture"
+      title: "教育科技",
+      description: "教育创新与数字化学习方法",
+      icon: "edutech"
     },
     {
       id: 5,
-      title: "金融",
-      description: "金融市场分析与投资策略",
-      icon: "finance"
+      title: "机器人学",
+      description: "机器人设计与自动化技术发展",
+      icon: "robotics"
     },
     {
       id: 6,
-      title: "商业",
-      description: "商业模式创新与企业管理",
-      icon: "business"
+      title: "医疗健康",
+      description: "现代医疗技术与健康管理创新",
+      icon: "health"
     },
     {
       id: 7,
-      title: "股市",
-      description: "股票市场分析与投资研究",
-      icon: "stocks"
+      title: "智慧城市",
+      description: "智能城市规划与城市科技应用",
+      icon: "city"
     },
     {
       id: 8,
-      title: "量子计算",
-      description: "量子计算研究与应用进展",
-      icon: "quantum"
+      title: "海洋科学",
+      description: "海洋研究与海洋资源可持续利用",
+      icon: "ocean"
+    },
+    {
+      id: 9,
+      title: "心理学",
+      description: "心理学研究与心理健康应用",
+      icon: "psycho"
     }
   ];
   
   const handleCardClick = (id: number) => {
-    switch (id) {
-      case 1:
-        navigate('/ai');
-        break;
-      case 2:
-        navigate('/nanomaterials');
-        break;
-      case 3:
-        navigate('/global-situation');
-        break;
-      case 4:
-        navigate('/agriculture');
-        break;
-      case 5:
-        navigate('/finance');
-        break;
-      case 6:
-        navigate('/business');
-        break;
-      case 7:
-        navigate('/stocks');
-        break;
-      case 8:
-        navigate('/quantum-computing');
-        break;
-    }
+    // For now, clicking on any area just shows an alert
+    alert(`您选择了: ${allAreas.find(area => area.id === id)?.title}。此页面正在建设中。`);
   };
   
   return (
