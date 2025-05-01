@@ -16,12 +16,12 @@ interface AreaPageHeaderProps {
 
 const AreaPageHeader = ({ title, areaId, areaInfo }: AreaPageHeaderProps) => {
   return (
-    <div className="bg-purple-50 p-4 flex items-center justify-between border-b">
+    <div className="miyazaki-header p-4 flex items-center justify-between border-b-2 border-blue-100">
       <div className="flex items-center gap-2">
-        <Link to="/" className="text-gray-600 hover:text-gray-900">
+        <Link to="/" className="text-gray-600 hover:text-gray-900 transition-colors rounded-full bg-white/50 p-1 hover:bg-white/80">
           <ChevronLeft size={20} />
         </Link>
-        <h1 className="text-xl font-semibold">{title}</h1>
+        <h1 className="text-xl font-semibold text-blue-800">{title}</h1>
       </div>
       
       <FavoriteButton areaId={areaId} areaInfo={areaInfo} />

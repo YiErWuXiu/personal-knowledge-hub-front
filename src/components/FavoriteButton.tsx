@@ -45,7 +45,11 @@ const FavoriteButton = ({ areaId, areaInfo }: FavoriteButtonProps) => {
     <Button
       variant="ghost"
       onClick={toggleFavorite}
-      className={`gap-2 ${isInFavorites ? 'text-purple-600' : 'text-gray-600'}`}
+      className={`gap-2 rounded-full transition-all duration-300 ${
+        isInFavorites 
+          ? 'bg-blue-100 text-blue-700 hover:bg-blue-200' 
+          : 'bg-white/50 text-gray-700 hover:bg-white/80'
+      }`}
     >
       {isInFavorites ? (
         <>

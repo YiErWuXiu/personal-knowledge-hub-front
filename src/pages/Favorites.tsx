@@ -14,28 +14,28 @@ const Favorites = () => {
   };
   
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-purple-50">
       {/* Main Content */}
       <main className="flex-1 p-0">
         {/* Navigation Tabs */}
         <Tabs defaultValue="favorites" className="w-full">
-          <TabsList className="w-full rounded-none bg-slate-700">
+          <TabsList className="w-full rounded-none miyazaki-tabs">
             <TabsTrigger 
               value="home" 
-              className="data-[state=active]:bg-slate-800 text-white px-8 py-2 rounded-none" 
+              className="miyazaki-tab px-8 py-2 rounded-none" 
               onClick={() => navigate('/')}
             >
               首页
             </TabsTrigger>
             <TabsTrigger 
               value="favorites" 
-              className="data-[state=active]:bg-slate-800 text-white px-8 py-2 rounded-none"
+              className="data-[state=active]:miyazaki-tab-active px-8 py-2 rounded-none"
             >
-              我的喜欢
+              我的收藏
             </TabsTrigger>
             <TabsTrigger 
               value="more-areas" 
-              className="data-[state=active]:bg-slate-800 text-white px-8 py-2 rounded-none" 
+              className="miyazaki-tab px-8 py-2 rounded-none" 
               onClick={() => navigate('/more-areas')}
             >
               更多领域
@@ -44,11 +44,11 @@ const Favorites = () => {
           
           {/* Favorites Tab Content */}
           <TabsContent value="favorites">
-            <div className="p-6">
-              <Card className="mb-6 bg-purple-50 border-none">
-                <CardContent className="p-4">
-                  <h2 className="text-xl font-bold text-purple-700 mb-2">我的喜欢</h2>
-                  <p className="text-sm text-purple-600">这里是用户喜欢的领域，与个人知识库不相通。</p>
+            <div className="p-6 animate-fade-in">
+              <Card className="mb-6 border-none rounded-xl overflow-hidden shadow-md">
+                <CardContent className="p-4 bg-gradient-to-r from-[#FEF7CD] to-[#FDE1D3]">
+                  <h2 className="text-xl font-bold text-purple-700 mb-2">我的收藏</h2>
+                  <p className="text-sm text-purple-600">这里是用户收藏的领域，与个人知识库不相通。</p>
                 </CardContent>
               </Card>
               
@@ -58,13 +58,13 @@ const Favorites = () => {
                     <div 
                       key={area.id} 
                       onClick={() => handleCardClick(area.path)} 
-                      className="cursor-pointer"
+                      className="cursor-pointer transform hover:scale-105 transition-transform duration-300"
                     >
                       <RecommendationCard recommendation={area} />
                     </div>
                   ))
                 ) : (
-                  <p className="col-span-3 text-center text-gray-500 py-8">
+                  <p className="col-span-3 text-center text-gray-500 py-8 bg-white/70 rounded-lg backdrop-blur-sm shadow-sm">
                     还没有收藏的领域。从"更多领域"中添加一些吧！
                   </p>
                 )}
