@@ -64,17 +64,19 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				knowledge: {
-					ai: '#4a8ef9',
-					quantum: '#a667e4',
-					bio: '#4caf50',
-					web: '#9163cb',
-					blockchain: '#2aa198'
+					ai: '#3B82F6',
+					quantum: '#22C55E',
+					bio: '#EAB308',
+					web: '#0EA5E9',
+					blockchain: '#14B8A6'
 				},
 				premium: {
-					purple: '#9b87f5',
-					violet: '#7E69AB',
-					softPurple: '#E5DEFF',
-					darkPurple: '#1A1F2C'
+					blue: '#3B82F6',
+					green: '#22C55E',
+					yellow: '#EAB308',
+					softBlue: '#DBEAFE',
+					softGreen: '#DCFCE7',
+					softYellow: '#FEF9C3'
 				}
 			},
 			borderRadius: {
@@ -107,9 +109,9 @@ export default {
 				'pulse-light': 'pulse-light 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
 			},
 			backgroundImage: {
-				'gradient-premium': 'linear-gradient(to right, #9b87f5, #7E69AB)',
-				'gradient-card': 'linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%)',
-				'gradient-soft': 'linear-gradient(90deg, hsla(277, 75%, 84%, 1) 0%, hsla(297, 50%, 51%, 1) 100%)'
+				'gradient-premium': 'linear-gradient(to right, #3B82F6, #22C55E)',
+				'gradient-card': 'linear-gradient(135deg, #FEF9C3 0%, #DBEAFE 100%)',
+				'gradient-soft': 'linear-gradient(90deg, hsla(184deg, 70%, 75%, 1) 0%, hsla(63, 90%, 76%, 1) 100%)'
 			}
 		}
 	},

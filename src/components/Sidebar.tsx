@@ -13,17 +13,17 @@ const Sidebar = () => {
   }
   
   return (
-    <div className={`${isCollapsed ? 'w-12' : 'w-48'} bg-gradient-to-b from-purple-50 to-white min-h-screen p-4 flex flex-col relative transition-all duration-300 shadow-md`}>
+    <div className={`${isCollapsed ? 'w-12' : 'w-48'} bg-gradient-to-b from-yellow-50 to-blue-50 min-h-screen p-4 flex flex-col relative transition-all duration-300 shadow-md`}>
       {/* Collapse Toggle Button */}
       <button 
         onClick={() => setIsCollapsed(!isCollapsed)} 
-        className="absolute -right-3 top-6 bg-white rounded-full p-1 shadow-md hover:bg-purple-50 z-10 border border-purple-100"
+        className="absolute -right-3 top-6 bg-white rounded-full p-1 shadow-md hover:bg-yellow-50 z-10 border border-blue-100"
       >
         {isCollapsed ? <ChevronRight size={16} /> : <ChevronLeft size={16} />}
       </button>
       
       <div className="mb-6">
-        {!isCollapsed && <h2 className="text-lg font-semibold text-slate-800">个人知识库</h2>}
+        {!isCollapsed && <h2 className="text-lg font-semibold text-blue-800">个人知识库</h2>}
       </div>
       
       <nav className="space-y-2">
@@ -80,7 +80,7 @@ const SidebarItem = ({
       className={`flex items-center gap-3 px-3 py-2 rounded-md transition-colors ${
         isActive 
           ? "premium-sidebar-item shadow-sm" 
-          : "text-slate-600 hover:bg-purple-50 hover:text-purple-700"
+          : "text-blue-700 hover:bg-green-50 hover:text-green-700"
       }`}
       title={isCollapsed ? label : ""}
     >

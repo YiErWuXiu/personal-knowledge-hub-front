@@ -41,7 +41,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-slate-50 to-white">
+    <div className="flex min-h-screen bg-gradient-to-br from-yellow-50 to-blue-50">
       {/* Left Sidebar */}
       <Sidebar />
 
@@ -52,20 +52,20 @@ const Index = () => {
           <TabsList className="w-full rounded-none premium-header">
             <TabsTrigger 
               value="home" 
-              className="data-[state=active]:bg-slate-900/80 text-white px-8 py-2 rounded-none"
+              className="data-[state=active]:bg-blue-700/80 text-white px-8 py-2 rounded-none"
             >
               首页
             </TabsTrigger>
             <TabsTrigger 
               value="favorites"
-              className="data-[state=active]:bg-slate-900/80 text-white px-8 py-2 rounded-none"
+              className="data-[state=active]:bg-blue-700/80 text-white px-8 py-2 rounded-none"
               onClick={() => navigate('/favorites')}
             >
               我的收藏
             </TabsTrigger>
             <TabsTrigger 
               value="more-areas"
-              className="data-[state=active]:bg-slate-900/80 text-white px-8 py-2 rounded-none"
+              className="data-[state=active]:bg-blue-700/80 text-white px-8 py-2 rounded-none"
               onClick={() => navigate('/more-areas')}
             >
               更多领域
@@ -77,22 +77,22 @@ const Index = () => {
             {/* Welcome Card */}
             <Card className="mb-6 premium-card">
               <CardContent className="p-4">
-                <h2 className="text-xl font-bold text-slate-800 mb-2">欢迎回来</h2>
-                <p className="text-sm text-slate-600">欢迎使用个人知识库。获取最新资讯。</p>
+                <h2 className="text-xl font-bold text-blue-800 mb-2">欢迎回来</h2>
+                <p className="text-sm text-blue-600">欢迎使用个人知识库。获取最新资讯。</p>
               </CardContent>
             </Card>
 
             {/* Content Input Section */}
             <div className="mb-6">
-              <h3 className="text-lg mb-4 text-violet-700 font-medium">输入或上传内容</h3>
+              <h3 className="text-lg mb-4 text-green-700 font-medium">输入或上传内容</h3>
               
               {/* Text Input */}
               <div className="mb-6">
-                <p className="text-sm text-slate-500 mb-2">输入网址或链接地址:</p>
+                <p className="text-sm text-blue-500 mb-2">输入网址或链接地址:</p>
                 <div className="flex gap-2">
                   <Input 
                     placeholder="输入网址或链接地址..." 
-                    className="flex-1 border-slate-200 focus:border-violet-300"
+                    className="flex-1 border-blue-200 focus:border-green-300"
                     value={searchValue}
                     onChange={(e) => setSearchValue(e.target.value)}
                   />
@@ -108,7 +108,7 @@ const Index = () => {
 
             {/* Recent Knowledge */}
             <div className="mt-8">
-              <Badge variant="outline" className="bg-violet-50 text-violet-700 border-violet-200 flex w-fit items-center gap-1 px-3 py-1 mb-4">
+              <Badge variant="outline" className="bg-yellow-50 text-blue-700 border-green-200 flex w-fit items-center gap-1 px-3 py-1 mb-4">
                 <Calendar className="h-3 w-3" />
                 <span>最近更新的知识</span>
               </Badge>
@@ -125,7 +125,7 @@ const Index = () => {
           <TabsContent value="favorites">
             <div className="p-6">
               <h2 className="text-xl font-semibold mb-4">我的收藏</h2>
-              <p className="text-slate-500">点击下方按钮查看我的收藏页面。</p>
+              <p className="text-blue-500">点击下方按钮查看我的收藏页面。</p>
               <Button 
                 className="mt-4 premium-button" 
                 onClick={() => navigate('/favorites')}
@@ -139,7 +139,7 @@ const Index = () => {
           <TabsContent value="more-areas">
             <div className="p-6">
               <h2 className="text-xl font-semibold mb-4">更多领域</h2>
-              <p className="text-slate-500">点击下方按钮查看更多领域页面。</p>
+              <p className="text-blue-500">点击下方按钮查看更多领域页面。</p>
               <Button 
                 className="mt-4 premium-button" 
                 onClick={() => navigate('/more-areas')}
