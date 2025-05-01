@@ -69,6 +69,12 @@ export default {
 					bio: '#4caf50',
 					web: '#9163cb',
 					blockchain: '#2aa198'
+				},
+				premium: {
+					purple: '#9b87f5',
+					violet: '#7E69AB',
+					softPurple: '#E5DEFF',
+					darkPurple: '#1A1F2C'
 				}
 			},
 			borderRadius: {
@@ -99,6 +105,11 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.3s ease-out',
 				'pulse-light': 'pulse-light 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
+			},
+			backgroundImage: {
+				'gradient-premium': 'linear-gradient(to right, #9b87f5, #7E69AB)',
+				'gradient-card': 'linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%)',
+				'gradient-soft': 'linear-gradient(90deg, hsla(277, 75%, 84%, 1) 0%, hsla(297, 50%, 51%, 1) 100%)'
 			}
 		}
 	},

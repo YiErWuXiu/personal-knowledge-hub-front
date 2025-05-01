@@ -34,19 +34,19 @@ const Favorites = () => {
     }
   };
   
-  return <div className="min-h-screen bg-slate-50">
+  return <div className="min-h-screen bg-gradient-to-br from-slate-50 to-white">
       {/* Main Content */}
       <main className="flex-1 p-0">
         {/* Navigation Tabs */}
         <Tabs defaultValue="favorites" className="w-full">
-          <TabsList className="w-full rounded-none bg-slate-700">
-            <TabsTrigger value="home" className="data-[state=active]:bg-slate-800 text-white px-8 py-2 rounded-none" onClick={() => navigate('/')}>
+          <TabsList className="w-full rounded-none premium-header">
+            <TabsTrigger value="home" className="data-[state=active]:bg-slate-900/80 text-white px-8 py-2 rounded-none" onClick={() => navigate('/')}>
               首页
             </TabsTrigger>
-            <TabsTrigger value="favorites" className="data-[state=active]:bg-slate-800 text-white px-8 py-2 rounded-none">
-              我的喜欢
+            <TabsTrigger value="favorites" className="data-[state=active]:bg-slate-900/80 text-white px-8 py-2 rounded-none">
+              我的收藏
             </TabsTrigger>
-            <TabsTrigger value="more-areas" className="data-[state=active]:bg-slate-800 text-white px-8 py-2 rounded-none" onClick={() => navigate('/more-areas')}>
+            <TabsTrigger value="more-areas" className="data-[state=active]:bg-slate-900/80 text-white px-8 py-2 rounded-none" onClick={() => navigate('/more-areas')}>
               更多领域
             </TabsTrigger>
           </TabsList>
@@ -54,10 +54,10 @@ const Favorites = () => {
           {/* Favorites Tab Content */}
           <TabsContent value="favorites">
             <div className="p-6">
-              <Card className="mb-6 bg-purple-50 border-none">
+              <Card className="mb-6 premium-card">
                 <CardContent className="p-4">
-                  <h2 className="text-xl font-bold text-purple-700 mb-2">我的喜欢</h2>
-                  <p className="text-sm text-purple-600">这里是用户喜欢的领域，与个人知识库不相通。</p>
+                  <h2 className="text-xl font-bold text-slate-800 mb-2">我的收藏</h2>
+                  <p className="text-sm text-slate-600">这里是用户喜欢的领域，与个人知识库不相通。</p>
                 </CardContent>
               </Card>
               
@@ -73,7 +73,7 @@ const Favorites = () => {
           <TabsContent value="home">
             <div className="p-6">
               <h2 className="text-xl font-semibold mb-4">首页</h2>
-              <p className="text-gray-500">请切换到首页标签查看内容。</p>
+              <p className="text-slate-500">请切换到首页标签查看内容。</p>
             </div>
           </TabsContent>
           
@@ -81,7 +81,7 @@ const Favorites = () => {
           <TabsContent value="more-areas">
             <div className="p-6">
               <h2 className="text-xl font-semibold mb-4">更多领域</h2>
-              <p className="text-gray-500">请切换到更多领域标签查看内容。</p>
+              <p className="text-slate-500">请切换到更多领域标签查看内容。</p>
             </div>
           </TabsContent>
         </Tabs>
