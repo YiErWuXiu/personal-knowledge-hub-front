@@ -1,10 +1,12 @@
 
-import Sidebar from "@/components/Sidebar";
-import RecommendationCard from "@/components/RecommendationCard";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import RecommendationCard from "@/components/RecommendationCard";
 
 const Favorites = () => {
+  const navigate = useNavigate();
   const recommendations = [
     {
       id: 1,
@@ -26,11 +28,14 @@ const Favorites = () => {
     }
   ];
 
-  return (
-    <div className="flex min-h-screen bg-slate-50">
-      {/* Left Sidebar */}
-      <Sidebar />
+  const handleCardClick = (id: number) => {
+    if (id === 1) {
+      navigate('/quantum-computing');
+    }
+  };
 
+  return (
+    <div className="min-h-screen bg-slate-50">
       {/* Main Content */}
       <main className="flex-1 p-0">
         {/* Navigation Tabs */}
@@ -39,6 +44,7 @@ const Favorites = () => {
             <TabsTrigger 
               value="home" 
               className="data-[state=active]:bg-slate-800 text-white px-8 py-2 rounded-none"
+              onClick={() => navigate('/')}
             >
               首页
             </TabsTrigger>
@@ -62,7 +68,9 @@ const Favorites = () => {
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
                 {recommendations.map((rec) => (
-                  <RecommendationCard key={rec.id} recommendation={rec} />
+                  <div key={rec.id} onClick={() => handleCardClick(rec.id)} className="cursor-pointer">
+                    <RecommendationCard recommendation={rec} />
+                  </div>
                 ))}
               </div>
             </div>

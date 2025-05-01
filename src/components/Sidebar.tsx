@@ -6,6 +6,11 @@ import { Link, useLocation } from "react-router-dom";
 const Sidebar = () => {
   const location = useLocation();
   
+  // Hide sidebar on Favorites page and QuantumComputing page
+  if (location.pathname === "/favorites" || location.pathname === "/quantum-computing") {
+    return null;
+  }
+  
   return (
     <div className="w-48 bg-purple-50 min-h-screen p-4 flex flex-col">
       <div className="mb-6">

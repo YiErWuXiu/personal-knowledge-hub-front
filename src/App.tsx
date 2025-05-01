@@ -8,6 +8,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Favorites from "./pages/Favorites";
 import AI from "./pages/AI";
+import QuantumComputing from "./pages/QuantumComputing";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +22,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/ai" element={<AI />} />
+          <Route path="/quantum-computing" element={<QuantumComputing />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

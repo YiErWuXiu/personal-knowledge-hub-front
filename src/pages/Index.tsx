@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { ArrowRight, Bookmark, Briefcase, Calendar, Home, Search, Upload, User } from "lucide-react";
 import { Input } from "@/components/ui/input";
@@ -6,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
+import { useNavigate } from "react-router-dom";
 import Sidebar from "@/components/Sidebar";
 import KnowledgeCard from "@/components/KnowledgeCard";
 import RecommendationCard from "@/components/RecommendationCard";
@@ -13,6 +13,7 @@ import UploadArea from "@/components/UploadArea";
 
 const Index = () => {
   const [searchValue, setSearchValue] = useState("");
+  const navigate = useNavigate();
 
   const recentKnowledge = [
     {
@@ -78,6 +79,7 @@ const Index = () => {
             <TabsTrigger 
               value="favorites"
               className="data-[state=active]:bg-slate-800 text-white px-8 py-2 rounded-none"
+              onClick={() => navigate('/favorites')}
             >
               我的喜欢
             </TabsTrigger>
@@ -151,13 +153,13 @@ const Index = () => {
           <TabsContent value="favorites">
             <div className="p-6">
               <h2 className="text-xl font-semibold mb-4">我的喜欢</h2>
-              <p className="text-gray-500">这里显示系统推荐的领域，与个人知识库不相通。</p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-                {recommendations.map((rec) => (
-                  <RecommendationCard key={rec.id} recommendation={rec} />
-                ))}
-              </div>
+              <p className="text-gray-500">点击下方按钮查看我的喜欢页面。</p>
+              <Button 
+                className="mt-4" 
+                onClick={() => navigate('/favorites')}
+              >
+                查看我的喜欢
+              </Button>
             </div>
           </TabsContent>
         </Tabs>
