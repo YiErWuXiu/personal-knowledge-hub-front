@@ -35,8 +35,8 @@
 
     --radius: 0.75rem;
 
-    /* Miyazaki style colors */
-    --miyazaki-blue: 195 81% 57%;
+    /* Miyazaki style colors with premium feel */
+    --miyazaki-blue: 210 85% 60%;
     --miyazaki-green: 152 58% 86%;
     --miyazaki-yellow: 48 100% 91%;
     --miyazaki-orange: 24 97% 81%;
@@ -109,8 +109,8 @@
   }
 
   .miyazaki-button {
-    @apply rounded-full transition-all duration-300 hover:shadow-lg;
-    background: linear-gradient(to bottom right, hsl(var(--miyazaki-blue)), #33C3F0);
+    @apply rounded-full transition-all duration-300 hover:shadow-lg text-white;
+    background: linear-gradient(to bottom right, hsl(var(--miyazaki-blue)), #2d82c7);
   }
 
   .miyazaki-header {
@@ -118,7 +118,7 @@
   }
 
   .miyazaki-tabs {
-    @apply bg-gradient-to-r from-blue-500 to-purple-400 text-white;
+    @apply bg-gradient-to-r from-[#4a8ef9] to-[#9163cb] text-white shadow-md;
   }
 
   .miyazaki-tab {

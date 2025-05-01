@@ -49,23 +49,23 @@ const Index = () => {
       <main className="flex-1 p-0">
         {/* Navigation Tabs */}
         <Tabs defaultValue="home" className="w-full">
-          <TabsList className="w-full rounded-none bg-slate-700">
+          <TabsList className="w-full rounded-none miyazaki-tabs">
             <TabsTrigger 
               value="home" 
-              className="data-[state=active]:bg-slate-800 text-white px-8 py-2 rounded-none"
+              className="miyazaki-tab data-[state=active]:miyazaki-tab-active text-white px-8 py-2 rounded-none"
             >
               首页
             </TabsTrigger>
             <TabsTrigger 
               value="favorites"
-              className="data-[state=active]:bg-slate-800 text-white px-8 py-2 rounded-none"
+              className="miyazaki-tab data-[state=active]:miyazaki-tab-active text-white px-8 py-2 rounded-none"
               onClick={() => navigate('/favorites')}
             >
-              我的喜欢
+              我的收藏
             </TabsTrigger>
             <TabsTrigger 
               value="more-areas"
-              className="data-[state=active]:bg-slate-800 text-white px-8 py-2 rounded-none"
+              className="miyazaki-tab data-[state=active]:miyazaki-tab-active text-white px-8 py-2 rounded-none"
               onClick={() => navigate('/more-areas')}
             >
               更多领域
@@ -73,10 +73,10 @@ const Index = () => {
           </TabsList>
           
           {/* Home Tab Content */}
-          <TabsContent value="home" className="p-6">
+          <TabsContent value="home" className="p-6 animate-fade-in">
             {/* Welcome Card */}
-            <Card className="mb-6 bg-purple-50 border-none">
-              <CardContent className="p-4">
+            <Card className="mb-6 border-none rounded-xl overflow-hidden shadow-md">
+              <CardContent className="p-4 bg-gradient-to-r from-[#FEF7CD] to-[#FDE1D3]">
                 <h2 className="text-xl font-bold text-purple-700 mb-2">欢迎回来</h2>
                 <p className="text-sm text-purple-600">欢迎使用个人知识库。获取最新资讯。</p>
               </CardContent>
@@ -92,11 +92,11 @@ const Index = () => {
                 <div className="flex gap-2">
                   <Input 
                     placeholder="输入网址或链接地址..." 
-                    className="flex-1"
+                    className="flex-1 shadow-sm border-blue-100"
                     value={searchValue}
                     onChange={(e) => setSearchValue(e.target.value)}
                   />
-                  <Button size="icon" className="bg-violet-500 hover:bg-violet-600">
+                  <Button size="icon" className="bg-blue-500 hover:bg-blue-600 rounded-full shadow-md">
                     <ArrowRight className="h-4 w-4" />
                   </Button>
                 </div>
@@ -124,13 +124,13 @@ const Index = () => {
           {/* Favorites Tab Content */}
           <TabsContent value="favorites">
             <div className="p-6">
-              <h2 className="text-xl font-semibold mb-4">我的喜欢</h2>
-              <p className="text-gray-500">点击下方按钮查看我的喜欢页面。</p>
+              <h2 className="text-xl font-semibold mb-4">我的收藏</h2>
+              <p className="text-gray-500">点击下方按钮查看我的收藏页面。</p>
               <Button 
-                className="mt-4" 
+                className="mt-4 miyazaki-button" 
                 onClick={() => navigate('/favorites')}
               >
-                查看我的喜欢
+                查看我的收藏
               </Button>
             </div>
           </TabsContent>
@@ -141,7 +141,7 @@ const Index = () => {
               <h2 className="text-xl font-semibold mb-4">更多领域</h2>
               <p className="text-gray-500">点击下方按钮查看更多领域页面。</p>
               <Button 
-                className="mt-4" 
+                className="mt-4 miyazaki-button" 
                 onClick={() => navigate('/more-areas')}
               >
                 查看更多领域
