@@ -6,9 +6,11 @@ import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Eye, EyeOff, Lock, User } from "lucide-react";
 import { toast } from "@/components/ui/sonner";
+import { useAuth } from "@/contexts/AuthContext";
 
 const Login = () => {
   const navigate = useNavigate();
+  const { login } = useAuth();
   const [activeTab, setActiveTab] = useState<string>("login");
   const [showPassword, setShowPassword] = useState(false);
   
@@ -24,8 +26,8 @@ const Login = () => {
   
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, you would validate and authenticate the user here
-    localStorage.setItem("isLoggedIn", "true");
+    // Use the AuthContext login function
+    login();
     toast.success("登录成功！");
     navigate("/");
   };
@@ -36,8 +38,8 @@ const Login = () => {
       toast.error("密码不匹配");
       return;
     }
-    // In a real app, you would register the user here
-    localStorage.setItem("isLoggedIn", "true");
+    // Register and login the user
+    login();
     toast.success("注册成功！");
     navigate("/");
   };
@@ -47,7 +49,8 @@ const Login = () => {
   };
   
   const skipLogin = () => {
-    localStorage.setItem("isLoggedIn", "true");
+    // Use the AuthContext login function
+    login();
     navigate("/");
   };
 
