@@ -85,27 +85,27 @@ const MoreAreas = () => {
   };
   
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-blue-50">
       <main className="flex-1 p-0">
         <Tabs defaultValue="more-areas" className="w-full">
-          <TabsList className="w-full rounded-none bg-slate-700">
+          <TabsList className="w-full rounded-none premium-header">
             <TabsTrigger 
               value="home" 
-              className="data-[state=active]:bg-slate-800 text-white px-8 py-2 rounded-none"
+              className="data-[state=active]:bg-blue-700/80 text-white px-8 py-2 rounded-none"
               onClick={() => navigate('/')}
             >
               首页
             </TabsTrigger>
             <TabsTrigger 
               value="favorites"
-              className="data-[state=active]:bg-slate-800 text-white px-8 py-2 rounded-none"
+              className="data-[state=active]:bg-blue-700/80 text-white px-8 py-2 rounded-none"
               onClick={() => navigate('/favorites')}
             >
               我的喜欢
             </TabsTrigger>
             <TabsTrigger 
               value="more-areas"
-              className="data-[state=active]:bg-slate-800 text-white px-8 py-2 rounded-none"
+              className="data-[state=active]:bg-blue-700/80 text-white px-8 py-2 rounded-none"
             >
               更多领域
             </TabsTrigger>
@@ -113,16 +113,16 @@ const MoreAreas = () => {
           
           <TabsContent value="more-areas">
             <div className="p-6">
-              <Card className="mb-6 bg-purple-50 border-none">
+              <Card className="mb-6 premium-card border-none shadow-lg">
                 <CardContent className="p-4">
-                  <h2 className="text-xl font-bold text-purple-700 mb-2">更多领域</h2>
-                  <p className="text-sm text-purple-600">探索更多知识领域，点击感兴趣的内容查看详情。</p>
+                  <h2 className="text-xl font-bold text-blue-800 mb-2">更多领域</h2>
+                  <p className="text-sm text-green-700">探索更多知识领域，点击感兴趣的内容查看详情。</p>
                 </CardContent>
               </Card>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
                 {allAreas.map(area => (
-                  <div key={area.id} onClick={() => handleCardClick(area.id)} className="cursor-pointer">
+                  <div key={area.id} onClick={() => handleCardClick(area.id)} className="cursor-pointer hover:scale-105 transition-transform duration-200">
                     <RecommendationCard recommendation={area} />
                   </div>
                 ))}
@@ -132,15 +132,15 @@ const MoreAreas = () => {
           
           <TabsContent value="home">
             <div className="p-6">
-              <h2 className="text-xl font-semibold mb-4">首页</h2>
-              <p className="text-gray-500">请切换到首页标签查看内容。</p>
+              <h2 className="text-xl font-semibold mb-4 text-blue-800">首页</h2>
+              <p className="text-green-700">请切换到首页标签查看内容。</p>
             </div>
           </TabsContent>
           
           <TabsContent value="favorites">
             <div className="p-6">
-              <h2 className="text-xl font-semibold mb-4">我的喜欢</h2>
-              <p className="text-gray-500">请切换到我的喜欢标签查看内容。</p>
+              <h2 className="text-xl font-semibold mb-4 text-blue-800">我的喜欢</h2>
+              <p className="text-green-700">请切换到我的喜欢标签查看内容。</p>
             </div>
           </TabsContent>
         </Tabs>
