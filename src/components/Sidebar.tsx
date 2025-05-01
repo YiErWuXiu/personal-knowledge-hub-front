@@ -1,16 +1,26 @@
 
 import React, { useState } from "react";
-import { BookOpen, Briefcase, ChevronLeft, ChevronRight, TrendingUp, FileText } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { BookOpen, Briefcase, ChevronLeft, ChevronRight, TrendingUp, FileText, LogOut } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
+import { toast } from "@/components/ui/sonner";
 
 const Sidebar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const { logout } = useAuth();
   
   // Hide sidebar on Favorites page and QuantumComputing page
   if (location.pathname === "/favorites" || location.pathname === "/quantum-computing") {
     return null;
   }
+  
+  const handleLogout = () => {
+    logout();
+    toast.success("已成功退出登录");
+    navigate('/login');
+  };
   
   return (
     <div className={`${isCollapsed ? 'w-12' : 'w-48'} bg-gradient-to-b from-yellow-50 to-blue-50 min-h-screen p-4 flex flex-col relative transition-all duration-300 shadow-md`}>
@@ -26,7 +36,7 @@ const Sidebar = () => {
         {!isCollapsed && <h2 className="text-lg font-semibold text-blue-800">个人知识库</h2>}
       </div>
       
-      <nav className="space-y-2">
+      <nav className="space-y-2 flex-1">
         <SidebarItem 
           icon={<FileText size={18} />} 
           label="AI" 
@@ -56,6 +66,18 @@ const Sidebar = () => {
           isCollapsed={isCollapsed}
         />
       </nav>
+      
+      {/* Logout Section */}
+      <div className="mt-auto pt-4 border-t border-blue-100">
+        <button
+          onClick={handleLogout}
+          className={`flex items-center gap-3 w-full px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition-colors`}
+          title={isCollapsed ? "退出登录" : ""}
+        >
+          <LogOut size={18} />
+          {!isCollapsed && <span className="font-medium">退出登录</span>}
+        </button>
+      </div>
     </div>
   );
 };
